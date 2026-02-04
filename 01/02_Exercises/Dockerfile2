@@ -35,18 +35,17 @@ FROM ubuntu:20.04
 # Run update, install packages and remove all installation files
 
 RUN apt-get update && \
- apt-get install -y nano && \
- rm -rf /var/lib/apt/lists/\*
+    apt-get install -y nano && \
+    rm -rf /var/lib/apt/lists/*
 
 # Create a unix-user for yourself
 
 RUN mkdir -p /home/mueller && \
- useradd -m -d /home/mueller -s /bin/bash -p $(openssl passwd -1 mueller) mueller
+    useradd -m -d /home/mueller -s /bin/bash -p $(openssl passwd -1 mueller) mueller
 
 # set the environment variable HOSTNAME to m347server
 
 ENV HOSTNAME=m347server
 
 # start bash
-
 CMD ["/bin/bash"]
