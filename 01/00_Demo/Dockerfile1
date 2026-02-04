@@ -1,10 +1,10 @@
 # Argument festlegen
-#??
+ARG VERSION=22.04
 # Betriebssystem holen
-#??
+FROM ubuntu:${VERSION}
 # Updaten ohne bestätigen
-#??
+RUN apt-get update && apt-get upgrade -y
 # bash starten
-#??
+CMD ["/bin/bash"]
 
 

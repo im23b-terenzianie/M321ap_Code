@@ -4,9 +4,9 @@
 # Check it with: scp /?
 #
 # Set variable for target node (your AWS EC2 instance)
-DEST="ubuntu@ec2-54-83-143-155.compute-1.amazonaws.com" #??
+DEST="ubuntu@ec2-54-163-208-242.compute-1.amazonaws.com" #??
 # Set private key
-PRIVATE_KEY="$HOME/.ssh/educator.pem" #??
+PRIVATE_KEY="$HOME/.ssh/M321_key.pem" #??
 # check if private key is set
 if [ ! -f ${PRIVATE_KEY} ]; then #??
     echo ${PRIVATE_KEY} does not exist! #??

@@ -1,21 +1,37 @@
 ### Aufgabe 1: Basic Container konfigurieren, starten und entfernen
-# 1. Erstellen Sie ein __Dockerfile__ mit Ubuntu 20.04,
+
+# 1. Erstellen Sie ein **Dockerfile** mit Ubuntu 20.04,
+
 # welches ohne Bestätigung das Betriebssystem updated.
+
 # 2. Wählen Sie für das Image und den Container geeignete Bezeichnungen.
+
 # 3. Erstellen Sie das Image.
+
 # 4. Listen Sie das erstellte Image auf.
+
 # 5. Starten Sie den Container (auf Basis des Images) und greifen Sie mit bash darauf zu.
-# 6. Im laufenden Container: Überprüfen Sie die OS-Version mit ```cat /etc/lsb-release```.
+
+# 6. Im laufenden Container: Überprüfen Sie die OS-Version mit `cat /etc/lsb-release`.
+
 # 7. Stoppen Sie den laufenden Container.
+
 # 8. Löschen anschliessend das Image und überprüfen Sie die Löschung.
+
 #
+
 # Argument os-version festlegen
-#??
+
+ARG OS_VERSION=20.04
+
 # Fetch OS
-#??
+
+FROM ubuntu:${OS_VERSION}
+
 # Updaten ohne bestätigen
-#??
+
+RUN apt-get update -y
+
 # bash starten
-#??
 
-
+CMD ["bash"]

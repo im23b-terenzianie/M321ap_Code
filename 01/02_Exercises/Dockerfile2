@@ -1,29 +1,52 @@
 ### Aufgabe 2: Unix-Benutzer im Container erstellen
-# 1. Erstellen Sie ein __Dockerfile__ mit
-#    1. Ubuntu 20.04, welches gleich ohne Bestätigung das Betriebssystem updated.
-#    2. welches nano installieren und alle Installationsdateien danach entfernen
-#    3. ein Home-Verzeichnis mit Ihrem Nachnamen (oder Kurzfassung davon) erstellt
-#    4. einen Benutzer mit Ihrem Nachnamen (oder Kurzfassung davon). Das Passwort ist der Benutzername, jedoch gehasht.
-#    5. bash als Shell gesetzt wird
+
+# 1. Erstellen Sie ein **Dockerfile** mit
+
+# 1. Ubuntu 20.04, welches gleich ohne Bestätigung das Betriebssystem updated.
+
+# 2. welches nano installieren und alle Installationsdateien danach entfernen
+
+# 3. ein Home-Verzeichnis mit Ihrem Nachnamen (oder Kurzfassung davon) erstellt
+
+# 4. einen Benutzer mit Ihrem Nachnamen (oder Kurzfassung davon). Das Passwort ist der Benutzername, jedoch gehasht.
+
+# 5. bash als Shell gesetzt wird
+
 # 2. Wählen Sie für das Image und den Container geeignete Bezeichnungen.
+
 # 3. Erstellen Sie das Image.
+
 # 4. Listen Sie das erstellte Image auf.
+
 # 5. Starten Sie den Container (auf Basis des Images) und greifen Sie mit bash darauf zu.
-# 6. Im laufenden Container: Überprüfen Sie die OS-Version mit ```cat /etc/lsb-release```.
+
+# 6. Im laufenden Container: Überprüfen Sie die OS-Version mit `cat /etc/lsb-release`.
+
 # 7. Stoppen Sie den laufenden Container.
+
 # 8. Löschen anschliessend das Image und überprüfen Sie die Löschung.
+
 #
+
 # Fetch OS
-#??
+
+FROM ubuntu:20.04
+
 # Run update, install packages and remove all installation files
-#??
-#??
-#??
+
+RUN apt-get update && \
+ apt-get install -y nano && \
+ rm -rf /var/lib/apt/lists/\*
 
 # Create a unix-user for yourself
-#??
+
+RUN mkdir -p /home/mueller && \
+ useradd -m -d /home/mueller -s /bin/bash -p $(openssl passwd -1 mueller) mueller
 
 # set the environment variable HOSTNAME to m347server
-#??
+
+ENV HOSTNAME=m347server
+
 # start bash
-#??
+
+CMD ["/bin/bash"]
